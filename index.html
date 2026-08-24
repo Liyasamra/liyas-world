@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liya's World — A Growing Story</title>
+<meta name="description" content="A private family keepsake and learning portal celebrating Liya's growth, learning, faith, and dreams.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="top-strip no-print">✨ Private family site — not indexed or searchable · <span id="topStripMode">Liya Mode</span></div>
+
+<header>
+  <nav aria-label="Main">
+    <div class="logo"><span class="dot" aria-hidden="true"></span> Liya's World</div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#/home" data-nav="home">Home</a></li>
+      <li class="nav-dropdown" id="learnDropdown">
+        <button class="navbtn" aria-haspopup="true" aria-expanded="false">Learn ▾</button>
+        <div class="nav-dropdown-panel" id="learnDropdownPanel"></div>
+      </li>
+      <li><a href="#/today" data-nav="today">Today</a></li>
+      <li><a href="#/homework" data-nav="homework">Homework</a></li>
+      <li><a href="#/reading" data-nav="reading">Reading</a></li>
+      <li><a href="#/creations" data-nav="creations">Creations</a></li>
+      <li><a href="#/achievements" data-nav="achievements">Achievements</a></li>
+      <li class="nav-dropdown" id="storyDropdown">
+        <button class="navbtn" aria-haspopup="true" aria-expanded="false">My Story ▾</button>
+        <div class="nav-dropdown-panel">
+          <a href="#/story/about">About Me</a>
+          <a href="#/story/heritage">Faith &amp; Heritage</a>
+          <a href="#/story/memories">Memories</a>
+          <a href="#/story/dreams">Dreams</a>
+          <a href="#/story/growth">Growth Timeline</a>
+          <a href="#/story/messages">Messages</a>
+          <a href="#/story/guestbook">Guestbook</a>
+        </div>
+      </li>
+      <li><a href="#/parent" data-nav="parent">Parent</a></li>
+      <li class="search-box no-print">
+        <input type="text" id="searchInput" placeholder="🔍 Search..." aria-label="Search the site">
+        <div class="search-results" id="searchResults"></div>
+      </li>
+      <li class="mode-toggle no-print" role="group" aria-label="Switch mode">
+        <button id="modeLiyaBtn" class="active" type="button">Liya Mode</button>
+        <button id="modeParentBtn" type="button">Parent Mode</button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ================= HOME ================= -->
+<div class="view" id="view-home">
+  <section class="hero" id="home">
+    <span class="blob blob1" aria-hidden="true"></span>
+    <span class="blob blob2" aria-hidden="true"></span>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">✨ A Growing Keepsake &amp; Learning Portal</span>
+        <h1>Welcome to <span>Liya's</span> World</h1>
+        <p class="lead">A growing collection of her creativity, learning, memories, accomplishments, and dreams — from age eight and onward.</p>
+        <p class="motto">"Kind. Curious. Rooted in faith."</p>
+        <div class="btn-row">
+          <a href="#/story/about" class="btn btn-primary">Meet Liya →</a>
+          <a href="#/learn" class="btn btn-outline">Go to Learning Center</a>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <span class="badge-star" aria-hidden="true">★</span>
+        <div class="ph-inner" style="border:none; padding:0; overflow:hidden;">
+          <img src="img/liya-hero.jpg" alt="Liya smiling, wearing a cap and beaded braids" style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="wrap">
+      <span class="eyebrow">This Week</span>
+      <h2 class="section-title reveal">What Liya's Working On 🌟</h2>
+      <p class="section-sub reveal">A quick snapshot — see the full Homework Center and Weekly Learning Plan for details.</p>
+      <div id="homeThisWeek"></div>
+    </div>
+  </section>
+
+  <section class="section-tint">
+    <div class="wrap">
+      <span class="eyebrow">Get Around</span>
+      <h2 class="section-title reveal">Explore Liya's World</h2>
+      <div class="grid grid-4" id="homeQuickLinks"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= LEARNING CENTER (dashboard) ================= -->
+<div class="view" id="view-learn">
+  <section class="page-head section-learning">
+    <div class="wrap">
+      <span class="eyebrow">My Learning Center</span>
+      <h2 class="section-title reveal">Growing My Mind 🧠</h2>
+      <p class="section-sub reveal">Eleven subject pathways, each with real lessons, practice, quizzes, and progress — third grade, 2026–2027.</p>
+    </div>
+  </section>
+  <section class="section-learning" style="padding-top:0;">
+    <div class="wrap">
+      <div class="grid grid-3" id="subjectDashboardGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= SUBJECT PAGE (dynamic) ================= -->
+<div class="view" id="view-subject">
+  <section class="page-head" id="subjectPageHead">
+    <div class="wrap">
+      <p class="crumb"><a href="#/learn">Learning Center</a> / <span id="subjectCrumbName"></span></p>
+      <h2 class="section-title" id="subjectPageTitle"></h2>
+      <p class="section-sub" id="subjectPageTagline"></p>
+    </div>
+  </section>
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="tabbar" id="subjectTabbar" role="tablist"></div>
+      <div id="subjectTabContent"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= TODAY ================= -->
+<div class="view" id="view-today">
+  <section class="page-head section-tint">
+    <div class="wrap">
+      <span class="eyebrow">Today's Learning</span>
+      <h2 class="section-title reveal">What Do I Need to Do Today? ✅</h2>
+      <p class="section-sub reveal" id="todayDateLabel"></p>
+    </div>
+  </section>
+  <section class="section-tint" style="padding-top:0;">
+    <div class="wrap">
+      <div class="today-progress-wrap"><div class="today-progress-fill" id="todayProgressFill" style="width:0%"></div></div>
+      <p style="font-weight:800; margin-bottom:20px;" id="todayProgressLabel">Today's Progress: 0 of 0 Complete</p>
+      <div id="todayList"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= HOMEWORK ================= -->
+<div class="view" id="view-homework">
+  <section class="page-head section-tint">
+    <div class="wrap">
+      <span class="eyebrow">Homework Center</span>
+      <h2 class="section-title reveal">Weekly Homework 📋</h2>
+      <p class="section-sub reveal">School homework and family learning activities, side by side.</p>
+    </div>
+  </section>
+  <section class="section-tint" style="padding-top:0;">
+    <div class="wrap">
+      <div class="week-nav">
+        <button class="btn btn-outline btn-sm" id="hwPrevWeek">← Previous Week</button>
+        <div class="week-label" id="hwWeekLabel"></div>
+        <button class="btn btn-outline btn-sm" id="hwNextWeek">Next Week →</button>
+      </div>
+      <div class="view-tabs-row" role="tablist" aria-label="Homework views">
+        <button data-hwview="week" class="active">This Week</button>
+        <button data-hwview="today">Today</button>
+        <button data-hwview="calendar">Calendar</button>
+        <button data-hwview="completed">Completed</button>
+      </div>
+      <div class="hw-filters no-print">
+        <select id="hwFilterSubject"><option value="">All Subjects</option></select>
+        <select id="hwFilterStatus"><option value="">All Statuses</option><option>Not Started</option><option>In Progress</option><option>Completed</option><option>Needs Review</option><option>Submitted</option></select>
+        <select id="hwFilterPriority"><option value="">All Priorities</option><option>Low</option><option>Medium</option><option>High</option></select>
+        <button class="btn btn-outline btn-sm" id="hwPrintBtn">🖨️ Print This Week</button>
+        <span id="hwParentControls" class="parent-only-inline">
+          <button class="btn btn-primary btn-sm" id="hwAddBtn">+ Add Homework</button>
+          <button class="btn btn-outline btn-sm" id="hwTemplateBtn">Use Weekly Template</button>
+        </span>
+      </div>
+      <div id="hwListContainer"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= READING ================= -->
+<div class="view" id="view-reading">
+  <section class="page-head section-learning">
+    <div class="wrap">
+      <span class="eyebrow">Reading Center</span>
+      <h2 class="section-title reveal">My Reading Log 📚</h2>
+      <p class="section-sub reveal">Building the habit of reading to learn, one book at a time.</p>
+    </div>
+  </section>
+  <section class="section-learning" style="padding-top:0;">
+    <div class="wrap">
+      <div class="grid grid-4" id="readingStats" style="margin-bottom:36px;"></div>
+      <div class="btn-row no-print parent-only-block" style="margin-bottom:24px;" id="readingParentControls">
+        <button class="btn btn-primary btn-sm" id="addBookBtn">+ Add a Book</button>
+      </div>
+      <div id="readingList"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CREATIONS ================= -->
+<div class="view" id="view-creations">
+  <section class="page-head section-creations">
+    <div class="wrap">
+      <span class="eyebrow">My Creations</span>
+      <h2 class="section-title reveal">Things I've Made 🎨</h2>
+      <p class="section-sub reveal">Artwork, writing, projects, and photos — filter by category.</p>
+    </div>
+  </section>
+  <section class="section-creations" style="padding-top:0;">
+    <div class="wrap">
+      <div class="filter-row" id="creationsFilterRow">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="art">Art</button>
+        <button class="filter-btn" data-filter="writing">Writing</button>
+        <button class="filter-btn" data-filter="school">School Projects</button>
+        <button class="filter-btn" data-filter="photo">Photography</button>
+        <button class="filter-btn" data-filter="craft">Crafts</button>
+        <button class="filter-btn" data-filter="video">Videos</button>
+      </div>
+      <div class="btn-row no-print parent-only-block" style="margin-bottom:24px;" id="creationsParentControls">
+        <button class="btn btn-primary btn-sm" id="addCreationBtn">+ Add a Creation</button>
+      </div>
+      <div class="grid grid-4" id="galleryGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<div class="view" id="view-achievements">
+  <section class="page-head section-achievements">
+    <div class="wrap">
+      <span class="eyebrow">Achievements &amp; Awards</span>
+      <h2 class="section-title reveal">Moments Worth Celebrating 🏅</h2>
+      <p class="section-sub reveal">Not a competition — just a record of growth, effort, and milestones.</p>
+    </div>
+  </section>
+  <section class="section-achievements" style="padding-top:0;">
+    <div class="wrap">
+      <div class="btn-row no-print parent-only-block" style="margin-bottom:24px;" id="achieveParentControls">
+        <button class="btn btn-primary btn-sm" id="addAchieveBtn">+ Add Achievement</button>
+      </div>
+      <div class="grid grid-4" id="achievementsGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= MY STORY (About / Heritage / Memories / Dreams / Growth / Messages / Guestbook) ================= -->
+<div class="view" id="view-story">
+
+  <section class="section-about" id="about">
+    <div class="wrap">
+      <span class="eyebrow">About Me</span>
+      <h2 class="section-title reveal">Hi, I'm Liya! 👋</h2>
+      <p class="section-sub reveal">In her own words — and a few notes from Mom and Dad.</p>
+      <div class="grid grid-3" style="align-items:start;">
+        <div class="card reveal" style="padding:14px; display:flex; align-items:center; justify-content:center;">
+          <img src="img/liya-hero.jpg" alt="Liya smiling, wearing a cap and beaded braids" style="width:100%; border-radius:16px; object-fit:cover; max-height:320px;">
+        </div>
+        <div class="card reveal">
+          <h3>My Story</h3>
+          <p class="serif-body">I turn 9 on October 21! I'm in third grade, and this year feels like a big step — new teacher, new classroom, more responsibility. I love reading chapter books, learning new Amharic words, and hearing stories about Ethiopia. I'm working on being someone people can always trust to tell the truth, even when it's hard, and on being patient when things don't go my way right away.</p>
+        </div>
+        <div class="card reveal">
+          <h3>My Strengths (so far!)</h3>
+          <p class="serif-body">Liya is moving from the early "foundation" years into a season of deepening — more independent thinking, a clearer sense of her Ethiopian Orthodox faith and history, and more ownership of her own choices and friendships. This year's two focus virtues are <b>truthfulness</b> and <b>patience</b>.</p>
+        </div>
+      </div>
+      <h3 style="margin:40px 0 16px;">Fun Facts About Me</h3>
+      <ul class="fact-list reveal">
+        <li>🎂 <b>Birthday:</b> October 21 — turning 9 this year!</li>
+        <li>📚 <b>Grade:</b> 3rd grade</li>
+        <li>🌍 <b>Heritage:</b> Ethiopian, proudly</li>
+        <li>⛪ <b>Faith:</b> Ethiopian Orthodox Tewahedo Christian</li>
+        <li>🗣️ <b>Learning:</b> Amharic, a little at a time</li>
+        <li>📖 <b>Favorite book / color / food:</b> <em>add mine here!</em></li>
+      </ul>
+      <p class="placeholder-note" style="margin-top:16px;">✏️ Editable placeholder — favorites, hobbies, and a few more "fun facts" can be added any time from the Parent Dashboard</p>
+    </div>
+  </section>
+
+  <section class="section-heritage" id="heritage">
+    <div class="wrap">
+      <span class="eyebrow">Family, Faith &amp; Heritage</span>
+      <h2 class="section-title reveal">Rooted in Faith and Ethiopia ✝️</h2>
+      <div class="heritage-hero reveal">
+        <p class="serif-body">Liya is growing up Ethiopian Orthodox Tewahedo Christian, in a family that holds her Ethiopian heritage and her faith close together — not as separate things, but as one story. Her school reinforces shared Christian foundations like daily prayer, Scripture, and character formation, but the specific traditions of the Ethiopian Orthodox Tewahedo Church — the sacraments, the saints, Ge'ez, the fasting calendar, the Divine Liturgy — are taught deliberately at home and at church.</p>
+      </div>
+      <div class="cross-divider" aria-hidden="true">☦</div>
+      <div class="grid grid-3">
+        <div class="card reveal"><span class="icon">🕯️</span><h3>Faith at Home</h3><p>Daily prayer, a Saturday formation time, and Sunday Divine Liturgy followed by a family conversation about what she heard and what was confusing.</p></div>
+        <div class="card reveal"><span class="icon">📜</span><h3>Ethiopian History</h3><p>Learning the story of Aksum and Lalibela as real places and real history — distinguishing documented history from religious tradition, and leaving deeper theological questions to a priest or Sunday school teacher.</p></div>
+        <div class="card reveal"><span class="icon">🗣️</span><h3>Amharic &amp; Culture</h3><p>Building Amharic vocabulary a little at a time, and learning Ethiopian food, music, and customs as living traditions, not performances.</p></div>
+      </div>
+      <p class="placeholder-note" style="margin-top:22px;">✏️ Space for family stories, favorite feast days, godparents, and heritage photos can be added from the Parent Dashboard</p>
+    </div>
+  </section>
+
+  <section class="section-memories" id="memories">
+    <div class="wrap">
+      <span class="eyebrow">My Adventures &amp; Memories</span>
+      <h2 class="section-title reveal">A Little Scrapbook 📔</h2>
+      <p class="section-sub reveal">Birthdays, trips, church events, and everyday moments worth keeping.</p>
+      <div class="btn-row no-print parent-only-block" style="margin-bottom:24px;" id="memoriesParentControls">
+        <button class="btn btn-primary btn-sm" id="addMemoryBtn">+ Add a Memory</button>
+      </div>
+      <div class="timeline" id="memoriesTimeline"></div>
+    </div>
+  </section>
+
+  <section class="section-dreams" id="dreams">
+    <div class="wrap">
+      <span class="eyebrow">My Goals &amp; Dreams</span>
+      <h2 class="section-title reveal">My Dream Constellation ✨</h2>
+      <p class="section-sub reveal">Questions to keep asking her as she grows — fill in a star with her real answer any time.</p>
+      <div class="dream-board reveal">
+        <div class="star-bg" aria-hidden="true"></div>
+        <div class="dream-nodes" id="dreamNodes"></div>
+      </div>
+      <p class="placeholder-note" style="margin-top:16px;">✏️ Answers are saved automatically as Liya (or a parent) fills them in</p>
+    </div>
+  </section>
+
+  <section class="section-growth" id="growth">
+    <div class="wrap">
+      <span class="eyebrow">Growth Timeline</span>
+      <h2 class="section-title reveal">Year by Year 🌱</h2>
+      <p class="section-sub reveal">A yearly snapshot that grows with her.</p>
+      <div class="growth-track reveal" id="growthTrack"></div>
+      <p class="placeholder-note" style="margin-top:16px;">✏️ Add or edit each year's notes from the Parent Dashboard as they happen</p>
+    </div>
+  </section>
+
+  <section class="section-messages" id="messages">
+    <div class="wrap">
+      <span class="eyebrow">Messages for Liya</span>
+      <h2 class="section-title reveal">A Private Time Capsule 💌</h2>
+      <p class="section-sub reveal">Letters, prayers, and encouragement from family — for Liya to read one day.</p>
+      <div class="lock-wrap reveal" id="msgLockWrap">
+        <div style="font-size:32px;">🔒</div>
+        <h3 style="margin-top:10px;">Parent Mode Required</h3>
+        <p style="color:var(--ink-soft); font-size:14px; margin-top:8px;">These letters unlock along with Parent Mode. Switch modes using the toggle in the menu.</p>
+      </div>
+      <div id="messagesContent" style="display:none;">
+        <div class="btn-row no-print" style="margin-bottom:20px;">
+          <button class="btn btn-primary btn-sm" id="addMessageBtn">+ Add a Message</button>
+        </div>
+        <div id="messagesList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-guestbook" id="guestbook">
+    <div class="wrap">
+      <span class="eyebrow">Guestbook</span>
+      <h2 class="section-title reveal">Leave a Kind Note</h2>
+      <p class="section-sub reveal">Messages from family and close friends — reviewed by a parent before they appear.</p>
+      <div class="gb-form reveal">
+        <div class="privacy-note">🛡️ For Liya's safety, this form does not collect or display her school, address, or any location details. All messages are held for parent approval before publishing.</div>
+        <div class="field"><label for="gbName">Your name</label><input type="text" id="gbName" placeholder="e.g. Aunt Selam"></div>
+        <div class="field"><label for="gbMsg">Your message</label><textarea id="gbMsg" rows="4" placeholder="Write something kind and encouraging..."></textarea></div>
+        <button class="btn btn-primary" type="button" id="gbSubmitBtn">Submit for Approval</button>
+        <p class="msg-note" id="gbConfirm" style="display:none;">Thank you! Your message will appear once a parent approves it.</p>
+      </div>
+      <h3 style="margin:36px 0 16px;">Approved Notes</h3>
+      <div id="guestbookApproved"></div>
+      <div id="guestbookPendingWrap" style="display:none; margin-top:30px;">
+        <h3 style="margin-bottom:16px;">Pending Approval <span class="placeholder-note">Parent Mode only</span></h3>
+        <div id="guestbookPending"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PARENT DASHBOARD ================= -->
+<div class="view" id="view-parent">
+  <div id="parentLockedWrap">
+    <section class="section-tint">
+      <div class="wrap">
+        <div class="parent-lock">
+          <div style="font-size:32px;">🔒</div>
+          <h3 style="margin-top:10px;">Parent Dashboard</h3>
+          <p style="color:var(--ink-soft); font-size:14px; margin-top:8px;">Enter the family PIN to switch into Parent Mode and manage homework, lessons, and settings.</p>
+          <input type="password" id="parentPinInput" placeholder="• • • •" maxlength="6" inputmode="numeric">
+          <button class="btn btn-primary" id="parentPinSubmit">Unlock Parent Mode</button>
+          <p class="msg-note" id="parentPinError" style="color:#C05A81; display:none;">That's not quite right — try again.</p>
+          <div class="security-note">
+            <b>⚠️ Not real security.</b> This PIN is a simple convenience lock built with front-end JavaScript — it keeps a young child from casually clicking into parent controls, but it is <b>not</b> secure against anyone who opens the browser's developer tools or edits the page source. Do not rely on it to protect sensitive information. Default PIN is <b>0000</b> — change it in Settings once you're in.
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="parentUnlockedWrap" style="display:none;">
+    <section class="page-head section-tint">
+      <div class="wrap">
+        <span class="eyebrow">Parent Dashboard</span>
+        <h2 class="section-title reveal">Manage Liya's World 🛠️</h2>
+        <p class="section-sub reveal">Everything here updates the live site immediately — no code required.</p>
+      </div>
+    </section>
+    <section class="section-tint" style="padding-top:0;">
+      <div class="wrap">
+        <div class="tabbar" id="parentTabbar" role="tablist"></div>
+        <div id="parentTabContent"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-logo">✨ Liya's World</div>
+    <p>A private family keepsake &amp; learning portal. Not intended for public search or indexing.</p>
+    <p>Built with love — August 2026. <a href="#" id="footerExportLink">Export a backup</a></p>
+  </div>
+</footer>
+
+<!-- ============ MODAL (shared) ============ -->
+<div class="modal-overlay no-print" id="modalOverlay">
+  <div class="modal" id="modalBody" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 id="modalTitle">Modal</h3>
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+    </div>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<div class="toast no-print" id="toast"></div>
+
+<!-- ============ DATA & SCRIPTS ============ -->
+<script src="data/subjects.js"></script>
+<script src="data/curriculum.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+<script src="js/learning.js"></script>
+<script src="js/quizzes.js"></script>
+<script src="js/homework.js"></script>
+<script src="js/reading.js"></script>
+<script src="js/keepsake.js"></script>
+<script src="js/parent-dashboard.js"></script>
+</body>
+</html>
